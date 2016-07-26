@@ -1,0 +1,14 @@
+---
+
+#
+# Nodemanager
+#
+- name: Copy Nodemanager Properties file
+  template: src=nodemanager.properties.j2 dest={{ nodemanager_home }}/nodemanager.properties owner=oracle group=oinstall
+      
+- name: Copy nodemanager systemd script
+  template: src=nodemanager.service.j2 dest=/etc/systemd/system/nodemanager.service mode=0755
+
+- name: Enable nodemanager as linux service
+  service: name=nodemanager enabled=true state=restarted
+

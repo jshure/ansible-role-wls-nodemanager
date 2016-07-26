@@ -1,0 +1,20 @@
+---
+
+oracle_user: oracle
+oracle_group: oinstall 
+java_home: /usr/java/latest
+weblogic_user: weblogic
+oracle_base: /home/oracle
+mw_home: "{{ oracle_base }}/middleware"
+oracle_home: "{{ mw_home }}/oracle_common"
+wl_home: "{{ mw_home }}/wlserver"
+mw_installer_folder: "{{ oracle_base }}/installer"
+
+domain_name: WLSDomain
+domain_home: "{{ oracle_base }}/user_projects/domains/{{ domain_name }}"
+
+identity_keystore_path: "{{ oracle_base }}/certs"
+identity_keystore_file: "{{ identity_keystore_path }}/identity.jks"
+
+nodemanager_home: "{{ domain_home }}/nodemanager"
+
