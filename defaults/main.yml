@@ -3,6 +3,8 @@
 oracle_user: oracle
 oracle_group: oinstall 
 java_home: /usr/java/latest
+#The option of turning ssl off is for use within a single container.  Do not expose externally.
+use_ssl: true
 weblogic_user: weblogic
 oracle_base: /opt/oracle
 domain_base: /home/oracle

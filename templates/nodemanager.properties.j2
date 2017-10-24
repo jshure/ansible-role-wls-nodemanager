@@ -11,7 +11,11 @@ ListenAddress={{ ansible_fqdn }}
 NativeVersionEnabled=true
 ListenPort=5556
 LogToStderr=true
+{% if use_ssl %}
 SecureListener=true
+{% else %}
+SecureListener=false
+{% endif %}
 LogCount=1
 StopScriptEnabled=false
 QuitEnabled=false
@@ -23,6 +27,7 @@ LogFile={{ domain_home }}/nodemanager/nodemanager.log
 LogFormatter=weblogic.nodemanager.server.LogFormatter
 ListenBacklog=50
 
+{% if use_ssl %}
 KeyStores=CustomIdentityAndJavaStandardTrust
 CustomIdentityKeystoreType=JKS
 CustomIdentityKeyStoreFileName={{ identity_keystore_file }}
@@ -30,3 +35,4 @@ CustomIdentityKeyStorePassPhrase={{ keystore_password }}
 CustomIdentityAlias={{ ansible_fqdn }}
 CustomIdentityPrivateKeyPassPhrase={{ keystore_password }}
 CipherSuite=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+{% endif %}
